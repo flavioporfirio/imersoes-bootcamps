@@ -103,7 +103,7 @@ export default function CreateTagForm() {
           className="bg-teal-400 text-teal-950"
         >
           {formState.isSubmitting ? (
-            <Loader2 className="size-3 animate-spin" />
+            <Loader2 className="size-3 anim" />
           ) : (
             <Check className="size-3" />
           )}

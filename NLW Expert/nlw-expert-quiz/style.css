@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-size: 1.6rem;
+  font-family: "Inter", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #0f172a;
+}
+
+main {
+  max-width: 64rem;
+  margin: 0 auto 6.4rem;
+
+  padding: 20px;
+}
+
+header {
+  margin-top: 6.4rem;
+  padding-bottom: 2.4rem;
+
+  border-bottom: 1px solid #334155;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #f1f5f9;
+
+  margin-top: 2.4rem;
+}
+
+#quiz {
+  counter-reset: quiz-item;
+}
+
+.quiz-item {
+  margin-top: 2rem;
+  border: 1px solid #475569;
+  border-radius: 0.6rem;
+
+  overflow: hidden;
+}
+
+.quiz-item h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 1.6rem 2rem;
+  color: #e2e8f0;
+
+  background-color: #1e293b;
+}
+
+.quiz-item h3::before {
+  counter-increment: quiz-item;
+  content: counter(quiz-item);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  font-size: 1.2rem;
+
+  width: 2.8rem;
+  height: 2.8rem;
+  flex-shrink: 0;
+
+  background-color: #475569;
+}
+
+.quiz-item dl {
+  display: grid;
+  gap: 8px;
+
+  padding: 2rem 2.4rem;
+}
+
+.quiz-item dl dt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  letter-spacing: 0;
+
+  color: #e2e3f0;
+}
+
+input {
+  all: unset; /*tira todo o css, as propriedades do input*/
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  border: 1px solid #94a3b8;
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+input:checked {
+  border: 1px solid #a3e635;
+}
+
+input:checked::before {
+  content: "";
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background-color: #a3e635;
+}
+
+#acertos {
+  position: fixed;
+  bottom: 0%;
+  left: 0%;
+
+  width: 100%;
+  padding-block: 1.2rem;
+
+  text-align: center;
+  background-color: #a3e635;
+}
