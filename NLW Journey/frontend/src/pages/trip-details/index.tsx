@@ -2,6 +2,8 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 import { Activities } from "./activities";
 import { CreateActivityModal } from "./create-activity-modal";
+import { CreateGuestsModal } from "./create-guests-modal";
+import { CreateLinkModal } from "./create-link-modal";
 import { DestinationAndDateHeader } from "./destination-and-date-header";
 import { Guests } from "./guests";
 import { ImportantLinks } from "./important-links";
@@ -9,6 +11,8 @@ import { ImportantLinks } from "./important-links";
 export function TripDetailsPage() {
   const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] =
     useState(false);
+  const [isCreateLinkModalOpen, setIsCreateLinkModalOpen] = useState(false);
+  const [isCreateGuestsModalOpen, setIsCreateGuestsModalOpen] = useState(false);
 
   function openCreateActivityModal() {
     setIsCreateActivityModalOpen(true);
@@ -16,6 +20,22 @@ export function TripDetailsPage() {
 
   function closeCreateActivityModal() {
     setIsCreateActivityModalOpen(false);
+  }
+
+  function openCreateLinkModal() {
+    setIsCreateLinkModalOpen(true);
+  }
+
+  function closeCreateLinkModal() {
+    setIsCreateLinkModalOpen(false);
+  }
+
+  function openCreateGuestsModal() {
+    setIsCreateGuestsModalOpen(true);
+  }
+
+  function closeCreateGuestsModal() {
+    setIsCreateGuestsModalOpen(false);
   }
 
   return (
@@ -39,15 +59,21 @@ export function TripDetailsPage() {
         </div>
 
         <div className="w-80 space-y-6">
-          <ImportantLinks />
+          <ImportantLinks openCreateLinkModal={openCreateLinkModal} />
           <div className="w-full h-px bg-zinc-800" />
-          <Guests />
+          <Guests openCreateGuestsModal={openCreateGuestsModal} />
         </div>
       </main>
       {isCreateActivityModalOpen && (
         <CreateActivityModal
           closeCreateActivityModal={closeCreateActivityModal}
         />
+      )}
+      {isCreateLinkModalOpen && (
+        <CreateLinkModal closeCreateLinkModal={closeCreateLinkModal} />
+      )}
+      {isCreateGuestsModalOpen && (
+        <CreateGuestsModal closeCreateGuestsModal={closeCreateGuestsModal} />
       )}
     </div>
   );

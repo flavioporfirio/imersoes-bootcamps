@@ -10,8 +10,11 @@ interface Participant {
   email: string;
   is_confirmed: boolean;
 }
+interface GuestsProps {
+  openCreateGuestsModal: () => void;
+}
 
-export function Guests() {
+export function Guests({ openCreateGuestsModal }: GuestsProps) {
   const { tripId } = useParams();
   const [participants, setParticipants] = useState<Participant[] | undefined>(
     []
@@ -50,7 +53,7 @@ export function Guests() {
           );
         })}
       </div>
-      <Button variant="secondary" size="full">
+      <Button onClick={openCreateGuestsModal} variant="secondary" size="full">
         <UserCog className="size-5 text-zinc-200" />
         <p className="text-zinc-200">Gerenciar convidados</p>
       </Button>

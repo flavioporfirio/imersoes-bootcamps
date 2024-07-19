@@ -1,43 +1,60 @@
 import { Link2, Plus } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Button } from "../../components/button";
+import { api } from "../../lib/axios";
 
-export function ImportantLinks() {
+interface ImportantLinksProps {
+  openCreateLinkModal: () => void;
+}
+
+interface LinksList {
+  id: string;
+  title: string;
+  url: string;
+}
+[];
+
+export function ImportantLinks({ openCreateLinkModal }: ImportantLinksProps) {
+  const { tripId } = useParams();
+
+  const [linksList, setLinksList] = useState<LinksList[]>([]);
+
+  useEffect(() => {
+    api
+      .get(`trips/${tripId}/links`)
+      .then((response) => setLinksList(response.data.links));
+  }, [tripId]);
+
   return (
     <div className="space-y-6 ">
       <h2 className="text-xl text-zinc-50 font-semibold">Links importantes</h2>
 
       <div className="space-y-5">
-        <div className="flex items-center justify-between gap-4">
-          <div className="space-y-1.5 flex-1">
-            <span className="block font-medium text-zinc-100 ">
-              Reserva do AirBnB
-            </span>
-            <a
-              href="#"
-              className="block text-zinc-400 text-xs truncate hover:text-zinc-200"
+        {linksList.map((link) => {
+          return (
+            <div
+              key={link.id}
+              className="flex items-center justify-between gap-4"
             >
-              https://www.airbnb.com.br/rooms/104700011
-            </a>
-          </div>
-          <Link2 className="size-5 text-zinc-400" />
-        </div>
-        <div className="flex items-center justify-between gap-4">
-          <div className="space-y-1.5 flex-1">
-            <span className="block font-medium text-zinc-100">
-              Regras da casa
-            </span>
-            <a
-              href="#"
-              className="block text-zinc-400 text-xs truncate hover:text-zinc-200"
-            >
-              https://www.notion.com/pages/1047000112354648336?adults=13&children=0&infants=0&pets=0&wishlist_item_id=11003621872995&check_in=2024-08-17&check_out=2024-08-26&source_impression_id=p3_1717600906_P3DL0E-bJZzguEci&previous_page_section_name=1000
-            </a>
-          </div>
-          <Link2 className="size-5 text-zinc-400 ml-auto" />
-        </div>
+              <div className="space-y-1.5 flex-1">
+                <span className="block font-medium text-zinc-100 ">
+                  {link.title}
+                </span>
+                <a
+                  href="#"
+                  className="block text-zinc-400 text-xs truncate hover:text-zinc-200"
+                >
+                  {link.url}
+                </a>
+              </div>
+              <Link2 className="size-5 text-zinc-400" />
+            </div>
+          );
+        })}
       </div>
 
-      <Button variant="secondary" size="full">
+      <Button onClick={openCreateLinkModal} variant="secondary" size="full">
         <Plus className="size-5 text-zinc-200" />
         <p className="text-zinc-200">Cadastrar novo link</p>
       </Button>
