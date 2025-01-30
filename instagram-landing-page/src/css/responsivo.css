@@ -1,0 +1,26 @@
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+@media (max-width: 650px) {
+  body {
+    background-color: #ffffff;
+  }
+
+  .grupo {
+    border: 1px solid transparent;
+  }
+
+  .wrapper {
+    width: 90%;
+  }
+
+  .left-img {
+    display: none;
+  }
+
+  .container {
+    width: 100%;
+  }
+}

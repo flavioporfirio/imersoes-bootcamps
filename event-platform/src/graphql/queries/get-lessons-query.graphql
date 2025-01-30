@@ -1,0 +1,9 @@
+query GetLessons {
+    lessons {
+        id
+        lessonType
+        availableAt
+        title
+        slug
+    }
+}

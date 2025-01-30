@@ -1,0 +1,37 @@
+@media (max-width: 620px) {
+  body {
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .pokemon-slider {
+    padding: 0 1.5rem;
+    gap: 1rem;
+  }
+
+  .btn-seta {
+    width: 2rem;
+    height: 2rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ul {
+    width: 27rem;
+    height: 48rem;
+  }
+
+  .cartao .img-pokemon {
+    max-height: 23rem;
+  }
+  .informacoes {
+    width: 25rem;
+    height: 4rem;
+  }
+
+  .informacoes h2 {
+    max-width: 50%;
+    font-size: 1.8rem;
+  }
+}
